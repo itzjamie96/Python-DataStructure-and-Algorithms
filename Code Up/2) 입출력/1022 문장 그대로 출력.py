@@ -1,0 +1,2 @@
+sentence = input()
+print(sentence)
