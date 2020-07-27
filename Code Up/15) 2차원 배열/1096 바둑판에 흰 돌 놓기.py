@@ -17,20 +17,27 @@ for i in range(n):
 
 # 바둑판 생성
 board = []
+
+# 19개의 0을 가진 리스트 생성
 row = []
 for i in range(19):
     row.append(0)
 
-# 파이썬에서 리스트 복사 방법 1: slice 전체
+# 파이썬에서 리스트 복사 방법 1: slice 전체 = 복사 후 신규 생성
 for i in range(19):
     board.append(row[:])
 
-# 각 돌의 좌표값과 일치하는 판의 인덱스는 1로 값 변경
+# 각 돌의 좌표에서
 for d in dol:
+
+    # row, column 값 추출 후 -1 (인덱스번호는 하나 작음)
     row = d[1]-1
     col = d[0]-1
+
+    # 해당 좌표값은 1로 바꿔주기
     board[col][row] = 1
 
+# 바둑판 프린트!
 for i in range(len(board)):
     row = board[i]
     for j in row:
