@@ -33,19 +33,22 @@ count = 1
 
 
 while True:
-    N = count * N
-    numList = list(map(int, str(N)))
+    num = count * N
+    numList = list(map(int, str(num)))
 
     if len(result) == 10:
         break
     else:
 
         for i in numList:
-            if i not in result:
+            if i in result:
+                continue
+            else:
                 result.append(i)
                 count += 1
 
 print(count)
+print(result)
 
 
 
