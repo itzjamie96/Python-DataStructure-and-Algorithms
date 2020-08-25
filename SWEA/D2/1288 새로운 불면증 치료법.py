@@ -12,43 +12,44 @@
 [출력]
 각 테스트 케이스마다 ‘#x’(x는 테스트케이스 번호를 의미하며 1부터 시작한다)를 출력하고,
 최소 몇 번 양을 세었을 때 이전에 봤던 숫자들의 자릿수에서 0에서 9까지의 모든 숫자를 보게 되는지 출력한다.
-
-5
-1
-2
-11
-1295
-1692
-
-#1 10
-#2 90
-#3 110
-#4 6475
-#5 5076
 '''
+T = int(input())
 
-N = int(input())
-result = []
-count = 1
+for tc in range(1, T+1):
 
+    # 1) N을 일단 스트링으로 받는다 => for문 돌리려면 N은 스트링이어야함
+    N = input()
 
-while True:
-    num = count * N
-    numList = list(map(int, str(num)))
+    # 2) 0~9까지 확인할 배열 생성
+    arr = [0 for _ in range(10)]
 
-    if len(result) == 10:
-        break
-    else:
+    # 3) N은 문자열이니까 계산용 int N을 만들어둔다
+    intN = int(N)
 
-        for i in numList:
-            if i in result:
+    # 4) count는 몇번 양을 세는지 확인할 변수
+    count = 1
+
+    # 5) 0 ~ 9 사이의 숫자가 나타나지 않았다면 = 아직 배열에 0이 있다면
+    while 0 in arr:
+
+        # 6) 문자열 N을 가지고 for문을 돌린다
+        for i in N:
+            if arr[int(i)] > 0: # 만약 이미 나왔다면 그냥 다음걸로 넘어가고
                 continue
-            else:
-                result.append(i)
-                count += 1
+            else:   #아직 안나왔으면 그 숫자 위치에 1 더해주기
+                arr[int(i)] += 1
+        
+        # 7) 아직 안끝났다면 count에 1을 더해준다
+        count += 1
+        # 8) 그리고 따로 만든 정수N이랑 count를 곱한 후, for문 돌리기 쉽게 그걸 다시 문자열로 만든다
+        N = str(intN * count)
 
-print(count)
-print(result)
+    # 9) while이 끝났으면 마지막 count += 1이 먹힌채로 끝났을 것이다. 그래서 1을 빼줘야함
+    count -= 1
+
+    # 끝
+    print('#{} {}'.format(tc, intN*count))
+
 
 
 
