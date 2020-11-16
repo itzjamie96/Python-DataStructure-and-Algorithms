@@ -59,5 +59,5 @@ for i in range(T):
                 max = score
     
     # 최빈수 출력
-    print(f"#{n} {max}")
+    print("#{} {}".format(n, max))
 
